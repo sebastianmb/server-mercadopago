@@ -6,6 +6,10 @@ const mercadopago = require("mercadopago");
 app.use(express.json());
 app.use(cors());
 
+mercadopago.configure({
+	access_token:"TEST-1226444629337365-070415-300051315d51f196f21dd572c0bba03f-329144871",
+});
+
 app.get('/',function(req,res){
     res.send("El servidor de mercado pago funciona! ")
 });
@@ -20,9 +24,9 @@ app.post("/create_preference", (req, res) => {
 			}
 		],
 		back_urls: { // ajustar url de retorno
-			"success": "http://localhost:8080/feedback",
-			"failure": "http://localhost:8080/feedback",
-			"pending": "http://localhost:8080/feedback"
+			"success": "http://localhost:3000",
+			"failure": "http://localhost:3000",
+			"pending": "http://localhost:3000"
 		},
 		auto_return: "approved",
 	};
