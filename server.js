@@ -9,7 +9,7 @@ app.use(cors());
 
 /* Metodo checkpro
 mercadopago.configure({
-	access_token:"",
+	access_token:"TEST-1226444629337365-070415-300051315d51f196f21dd572c0bba03f-329144871",
 });
 
 app.get('/',function(req,res){
@@ -61,7 +61,18 @@ app.listen(8080, () => {
 
 */
 
-mercadopago.configurations.setAccessToken('TU_ACCESS_TOKEN');
+mercadopago.configurations.setAccessToken('TEST-7239989042241863-071000-4918b62036394ba518f28a3db465dd98-329144871');
+
+mercadopago.payment_methods.listAll()
+  .then((response) => {
+    const payment_methods = response.body;
+    console.log(payment_methods);
+  })
+  .catch((error) => {
+    console.error('Error al obtener los métodos de pago:', error);
+  });
+
+
 
 app.post('/procesar-pago', (req, res) => {
 	const payment = req.body;
